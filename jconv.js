@@ -918,7 +918,7 @@
 						buf3 = buf[ i++ ];
 					switch( buf2 ) {
 						case 0x28:
-							if( buf3 === 0x42 || buf === 0xA1 ) {
+							if( buf3 === 0x42 || buf3 === 0x4A ) {
 								sequence = 0;
 							}
 							else if( buf3 === 0x49 ) {
@@ -992,7 +992,7 @@
 						buf3 = buf[ i++ ];
 					switch( buf2 ) {
 						case 0x28:
-							if( buf3 === 0x42 || buf === 0xA1 ) {
+							if( buf3 === 0x42 || buf3 === 0x4A ) {
 								sequence = 0;
 							}
 							else if( buf3 === 0x49 ) {
@@ -1065,7 +1065,7 @@
 						buf3 = buf[ i++ ];
 					switch( buf2 ) {
 						case 0x28:
-							if( buf3 === 0x42 || buf === 0xA1 ) {
+							if( buf3 === 0x42 || buf3 === 0x4A ) {
 								sequence = 0;
 							}
 							else if( buf3 === 0x49 ) {
@@ -1169,7 +1169,7 @@
 						buf3 = buf[ i++ ];
 					switch( buf2 ) {
 						case 0x28:
-							if( buf3 === 0x42 || buf === 0xA1 ) {
+							if( buf3 === 0x42 || buf3 === 0x4A ) {
 								sequence = 0;
 							}
 							else if( buf3 === 0x49 ) {

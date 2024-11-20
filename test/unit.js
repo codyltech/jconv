@@ -11,19 +11,33 @@ function getBuffer( type, name ) {
 }
 
 function check( type, from, to ) {
-	var toBuf = getBuffer( type, to );
-	var fromBuf = getBuffer( type, from );
+	var toFile = to;
+	var toCode = to;
+	var fromFile = from;
+	var fromCode = from;
+
+	if (typeof to === 'object') {
+		toFile = to.file;
+		toCode = to.code;
+	}
+	if (typeof from === 'object') {
+		fromFile = from.file;
+		fromCode = from.code;
+	}
+
+	var toBuf = getBuffer( type, toFile );
+	var fromBuf = getBuffer( type, fromFile );
 
 	// jconv
-	it( '#' + from + '->' + to, function() {
-		var convertedBuf = jconv.convert( fromBuf, from, to );
+	it( '#' + fromFile + '->' + toFile, function() {
+		var convertedBuf = jconv.convert( fromBuf, fromCode, toCode );
 
 		should( convertedBuf ).eql( toBuf );
 	});
 
 	// jconv.min
-	it( '#' + from + '->' + to + '( jconv.min )', function() {
-		var convertedBuf = jconvMin.convert( fromBuf, from, to );
+	it( '#' + fromFile + '->' + toFile + '( jconv.min )', function() {
+		var convertedBuf = jconvMin.convert( fromBuf, fromCode, toCode );
 
 		should( convertedBuf ).eql( toBuf );
 	});
@@ -75,6 +89,10 @@ describe( 'jconv.convert KANJI', function() {
 	check( 'KANJI', 'JIS', 'UTF8' );
 	check( 'KANJI', 'JIS', 'SJIS' );
 	check( 'KANJI', 'JIS', 'EUCJP' );
+
+	check( 'KANJI', { code: 'JIS', file: 'JIS-1B284A' }, 'UTF8' );
+	check( 'KANJI', { code: 'JIS', file: 'JIS-1B284A' }, 'SJIS' );
+	check( 'KANJI', { code: 'JIS', file: 'JIS-1B284A' }, 'EUCJP' );
 
 	check( 'KANJI', 'EUCJP', 'UTF8' );
 	check( 'KANJI', 'EUCJP', 'SJIS' );
