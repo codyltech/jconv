@@ -121,16 +121,17 @@ node generators/generate-source
 node generators/generate
 ```
 
+ * Minify
+```
+npm run minify
+```
+
  * Test
 ```
-grunt test
+npm run test
 ```
 
  * Speed Test  
-```
-# First, minify the script by closure-compiler.
-grunt minify
-```
 ```
 node test/speed  
 # This results are visualized by chart.js.  
