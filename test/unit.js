@@ -277,6 +277,7 @@ describe( 'jconv.convert EXTENSION', function() {
 describe( 'jconv.convert UNICODE', function() {
 	check( 'BASIC', 'SJIS', 'UNICODE' );
 	check( 'BASIC', 'JIS', 'UNICODE' );
+	check( 'BASIC', { code: 'JIS', file: 'JIS-1B284A' }, 'UNICODE' );
 	check( 'BASIC', 'EUCJP', 'UNICODE' );
 	check( 'BASIC', 'UTF8', 'UNICODE' );
 
